@@ -201,6 +201,10 @@ a {
     width: 980px;
 }
 
+.span15 {
+    width: 1164px;
+}
+
 .span12 {
     width: 980px;
 }
@@ -328,6 +332,11 @@ a {
         .row-fluid [class*="span"]:first-child {
             margin-left: 0;
         }
+
+    .row-fluid .span15 {
+        width: 1164px;
+        *width: 1164px;
+    }
 
     .row-fluid .span12 {
         width: 99.99999998999999%;
@@ -993,6 +1002,10 @@ textarea,
 .uneditable-input {
     margin-left: 0;
 }
+
+    input.span15, textarea.span15, .uneditable-input.span15 {
+        width: 1114px;
+    }
 
     input.span12, textarea.span12, .uneditable-input.span12 {
         width: 930px;

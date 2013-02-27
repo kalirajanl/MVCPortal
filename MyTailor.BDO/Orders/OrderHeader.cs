@@ -24,5 +24,12 @@ namespace MyTailor.BDO.Orders
         public OrderMeasurement MeasurementDetails { get; set; }
         public OrderPayment Payments { get; set; }
         public OrderFinishedSize FinishedSize { get; set; }
+
+        public void initOrderNumber()
+        {
+            this.OrderID = Guid.NewGuid();
+            this.OrderNumber = DateTime.Now.ToString("MMddHHss");
+            this.OrderTakenDate = DateTime.Today;
+        }
     }
 }

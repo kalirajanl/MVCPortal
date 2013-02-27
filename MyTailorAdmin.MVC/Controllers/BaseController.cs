@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using MyTailorAdmin.MVC.Models;
 using System.Collections.Generic;
 
+using MyTailor.BDO.Masters;
+using MyTailor.Logic.Masters;
+
 namespace MyTailorAdmin.MVC.Controllers
 {
     public class BaseController : Controller
@@ -15,6 +18,7 @@ namespace MyTailorAdmin.MVC.Controllers
             ViewBag.CrumbData = "";
             LoadBrudCrumbs();
             loadMenuItems();
+            loadMasters();
         }
 
         #region Protected Members
@@ -27,7 +31,7 @@ namespace MyTailorAdmin.MVC.Controllers
             Delete = 4
         }
 
-        protected virtual void LoadBrudCrumbs(PageMode currentPageMode= PageMode.Listing)
+        protected virtual void LoadBrudCrumbs(PageMode currentPageMode = PageMode.Listing)
         {
             List<CrumbItem> crumbs = new List<CrumbItem>();
             ViewBag.Crumbs = crumbs;
@@ -129,6 +133,24 @@ namespace MyTailorAdmin.MVC.Controllers
                 sbCrumb.AppendLine("</li>");
             }
             ViewBag.CrumbData = sbCrumb.ToString();
+        }
+
+        #endregion
+
+        #region Private Members
+
+        private void loadMasters()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            List<SalesMan> sms = SalesManLogic.GetSalesMen();
+            foreach (SalesMan t in sms)
+            {
+                SelectListItem s = new SelectListItem();
+                s.Text = t.LastName;
+                s.Value = t.SalesManID.ToString();
+                items.Add(s);
+            }
+            ViewBag.SalesMen = items;
         }
 
         #endregion

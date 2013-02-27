@@ -18,16 +18,12 @@ namespace MyTailorAdmin.MVC.Controllers
 
         }
 
-        public ActionResult Edit()
-        {
-            LoadBrudCrumbs(PageMode.Edit);
-            return View("Create",new OrderHeader() );
-        }
-
         public ActionResult Create()
         {
+            OrderHeader itm = new OrderHeader();
+            itm.initOrderNumber();
             LoadBrudCrumbs(PageMode.Create);
-            return View(new OrderHeader());
+            return View(itm);
         }
 
         public ActionResult Index()

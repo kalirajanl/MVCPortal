@@ -19,7 +19,7 @@ namespace MyTailor.BDO.Orders
         public string OrderNumber { get; set; }
         
         [Display(Name = "Order Date")]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime OrderTakenDate { get; set; }
 
         public OrderOriginatedFrom OrderSource { get; set; } // to be loaded from OrderNumber. how?

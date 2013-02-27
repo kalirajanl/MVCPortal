@@ -16,10 +16,15 @@ namespace MyTailor.DAL.Masters
             if (filterData != null)
             {
                 return salesMen.FindAll(sm =>
+                    sm.IsActive &&
                     sm.FirstName.StartsWith(filterData.FirstName) &&
                     sm.LastName.StartsWith(filterData.LastName) &&
                     sm.Initials.StartsWith(filterData.Initials)
-                    );//.OrderBy(sm => sm.Initials).ThenBy(sm => sm.LastName).ThenBy(sm => sm.FirstName);
+                    );
+            }
+            else
+            {
+                return salesMen.FindAll(sm => sm.IsActive);
             }
             return salesMen;
         }
