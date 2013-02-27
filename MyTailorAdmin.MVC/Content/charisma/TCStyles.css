@@ -1,0 +1,40 @@
+﻿.TCheading1 {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 17px;
+    color: #476595;
+}
+
+.TClabel {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    text-align: right;
+    width: 150px;
+    vertical-align: middle;
+}
+
+.TCshortlabel {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    text-align: right;
+    width: 50px;
+    vertical-align: text-top;
+}
+
+.TCcontrolContainer {
+    text-align: left;
+}
+
+.TCcontrol {
+}
+
+.TCimgContainer {
+     width:140px;
+    height:120px;
+}
+
+.TCimgHolder {
+    border: 1px solid black;
+    width:100px;
+    height:100px;
+    cursor:none;
+}

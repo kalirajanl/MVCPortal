@@ -1,0 +1,151 @@
+﻿@using System.Web.Optimization;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>MyTailor Admin Portal - @ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- The styles -->
+    <link id="bs-css" href="~/Content/charisma/css/bootstrap-cerulean.css" rel="stylesheet" />
+    <style type="text/css">
+        body
+        {
+            padding-bottom: 5px;
+        }
+
+        .sidebar-nav
+        {
+            padding: 5px 0;
+        }
+    </style>
+    <link href="~/Content/charisma/css/TCStyles.css" rel="stylesheet">
+    <link href="~/Content/charisma/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="~/Content/charisma/css/charisma-app.css" rel="stylesheet">
+    <link href="~/Content/charisma/css/jquery-ui-1.8.21.custom.css" rel="stylesheet">
+    <link href='~/Content/charisma/css/fullcalendar.css' rel='stylesheet'>
+    <link href='~/Content/charisma/css/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='~/Content/charisma/css/chosen.css' rel='stylesheet'>
+    <link href='~/Content/charisma/css/uniform.default.css' rel='stylesheet'>
+    <link href='~/Content/charisma/css/colorbox.css' rel='stylesheet'>
+    <link href='~/Content/charisma/css/jquery.cleditor.css' rel='stylesheet'>
+    <link href='~/Content/charisma/css/jquery.noty.css' rel='stylesheet'>
+    <link href='~/Content/charisma/css/noty_theme_default.css' rel='stylesheet'>
+    <link href='~/Content/charisma/css/elfinder.min.css' rel='stylesheet'>
+    <link href='~/Content/charisma/css/elfinder.theme.css' rel='stylesheet'>
+    <link href='~/Content/charisma/css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='~/Content/charisma/css/opa-icons.css' rel='stylesheet'>
+    <link href='~/Content/charisma/css/uploadify.css' rel='stylesheet'>
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+	  <script src="~/Content/Charisma/js/IE/html5.css"></script>
+	<![endif]-->
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="~/Content/charisma/img/favicon.ico" />
+</head>
+<body>
+    <div class="container-fluid">
+
+        <!-- header starts -->
+        @{Html.RenderPartial("_Header");}
+        <!-- header ends -->
+        <!-- left menu starts -->
+        @{Html.RenderPartial("_Leftbar");}
+        <!-- left menu ends -->
+
+        <div id="content" class="span10" style="min-height: 610px">
+            <!-- content starts -->
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+            </noscript>
+            <!-- crumb starts -->
+            @{Html.RenderPartial("_Crumb");}
+            <!-- crumb ends -->
+            @RenderBody()
+            <!-- content ends -->
+        </div>
+        <!--/#content.span10-->
+    </div>
+    <!--/fluid-row-->
+    <hr />
+    <!-- footer starts -->
+    @{Html.RenderPartial("_Footer");}
+    <!-- footer ends -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- jQuery -->
+    <script src="~/Content/charisma/js/jquery-1.7.2.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="~/Content/charisma/js/jquery-ui-1.8.21.custom.min.js"></script>
+    <!-- transition / effect library -->
+    <script src="~/Content/charisma/js/bootstrap-transition.js"></script>
+    <!-- alert enhancer library -->
+    <script src="~/Content/charisma/js/bootstrap-alert.js"></script>
+    <!-- modal / dialog library -->
+    <script src="~/Content/charisma/js/bootstrap-modal.js"></script>
+    <!-- custom dropdown library -->
+    <script src="~/Content/charisma/js/bootstrap-dropdown.js"></script>
+    <!-- scrolspy library -->
+    <script src="~/Content/charisma/js/bootstrap-scrollspy.js"></script>
+    <!-- library for creating tabs -->
+    <script src="~/Content/charisma/js/bootstrap-tab.js"></script>
+    <!-- library for advanced tooltip -->
+    <script src="~/Content/charisma/js/bootstrap-tooltip.js"></script>
+    <!-- popover effect library -->
+    <script src="~/Content/charisma/js/bootstrap-popover.js"></script>
+    <!-- button enhancer library -->
+    <script src="~/Content/charisma/js/bootstrap-button.js"></script>
+    <!-- accordion library (optional, not used in demo) -->
+    <script src="~/Content/charisma/js/bootstrap-collapse.js"></script>
+    <!-- carousel slideshow library (optional, not used in demo) -->
+    <script src="~/Content/charisma/js/bootstrap-carousel.js"></script>
+    <!-- autocomplete library -->
+    <script src="~/Content/charisma/js/bootstrap-typeahead.js"></script>
+    <!-- tour library -->
+    <script src="~/Content/charisma/js/bootstrap-tour.js"></script>
+    <!-- library for cookie management -->
+    <script src="~/Content/charisma/js/jquery.cookie.js"></script>
+    <!-- calander plugin -->
+    <script src='~/Content/charisma/js/fullcalendar.min.js'></script>
+    <!-- data table plugin -->
+    <script src='~/Content/charisma/js/jquery.dataTables.min.js'></script>
+
+    <!-- chart libraries start -->
+    <script src="~/Content/charisma/js/excanvas.js"></script>
+    <script src="~/Content/charisma/js/jquery.flot.min.js"></script>
+    <script src="~/Content/charisma/js/jquery.flot.pie.min.js"></script>
+    <script src="~/Content/charisma/js/jquery.flot.stack.js"></script>
+    <script src="~/Content/charisma/js/jquery.flot.resize.min.js"></script>
+    <!-- chart libraries end -->
+
+    <!-- select or dropdown enhancer -->
+    <script src="~/Content/charisma/js/jquery.chosen.min.js"></script>
+    <!-- checkbox, radio, and file input styler -->
+    <script src="~/Content/charisma/js/jquery.uniform.min.js"></script>
+    <!-- plugin for gallery image view -->
+    <script src="~/Content/charisma/js/jquery.colorbox.min.js"></script>
+    <!-- rich text editor library -->
+    <script src="~/Content/charisma/js/jquery.cleditor.min.js"></script>
+    <!-- notification plugin -->
+    <script src="~/Content/charisma/js/jquery.noty.js"></script>
+    <!-- file manager library -->
+    <script src="~/Content/charisma/js/jquery.elfinder.min.js"></script>
+    <!-- star rating plugin -->
+    <script src="~/Content/charisma/js/jquery.raty.min.js"></script>
+    <!-- for iOS style toggle switch -->
+    <script src="~/Content/charisma/js/jquery.iphone.toggle.js"></script>
+    <!-- autogrowing textarea plugin -->
+    <script src="~/Content/charisma/js/jquery.autogrow-textarea.js"></script>
+    <!-- multiple file upload plugin -->
+    <script src="~/Content/charisma/js/jquery.uploadify-3.1.min.js"></script>
+    <!-- history.js for cross-browser state change on ajax -->
+    <script src="~/Content/charisma/js/jquery.history.js"></script>
+    <!-- application script for Charisma demo -->
+    <script src="~/Content/charisma/js/charisma.js"></script>
+</body>
+</html>

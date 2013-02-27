@@ -1,0 +1,94 @@
+﻿@model MyTailor.BDO.Orders.OrderHeader
+
+@{
+    ViewBag.Title = "Create Order";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <div class="row-fluid sortable">
+        <div class="box span12">
+            <div class="box-header well" data-original-title>
+                <div class="box-icon">
+                    <p class="center">
+                        <a href="javascript:alert('hi');" class="btn btn-large btn-primary"><i class="icon-plus-sign icon-white"></i>&nbsp;Add</a>
+                        <a href="javascript:alert('hi');" class="btn btn-large btn-primary"><i class="icon-remove icon-white"></i>&nbsp;Delete</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="box-content">
+                <table id="OrderList" class="table table-striped table-bordered bootstrap-datatable datatable">
+                    <thead>
+                        <tr>
+                            <th style="display: none">Sequence
+                            </th>
+                            <th style="width: 100px">Material
+                            </th>
+                            <th style="width: 150px">Material Descirption
+                            </th>
+                            <th style="width: 100px">Items
+                            </th>
+                            <th style="width: 85px">Sub Item 1
+                            </th>
+                            <th style="width: 85px">Sub Item 2
+                            </th>
+                            <th style="width: 100px">Total in US$
+                            </th>
+                            <th style="width: 85px">Tailor Code
+                            </th>
+                            <th style="width: 75px">Yardage
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OrderMaterials)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sequence)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaterialName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaterialDescription)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ItemDescription.DisplayText)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SubItem1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SubItem2)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaterialPrice)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AssignedTailor.TailorCode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Yardage)
+                                </td>
+
+                                <td>
+                                    <a href="#" class="btn btn-minimize btn-round"><i class="icon-edit"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--/span-->
+
+    </div>
+    <!--/row-->
+   
+}
+
