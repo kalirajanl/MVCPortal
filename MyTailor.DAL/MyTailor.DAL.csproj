@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customers\CustomerDAL.cs" />
+    <Compile Include="Masters\CommonDAL.cs" />
     <Compile Include="Masters\SalesManDAL.cs" />
     <Compile Include="Masters\TailorDAL.cs" />
     <Compile Include="Orders\OrderDAL.cs" />

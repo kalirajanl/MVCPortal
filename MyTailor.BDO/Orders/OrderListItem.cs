@@ -51,6 +51,7 @@ namespace MyTailor.BDO.Orders
         [Display(Name = "Has Log")]
         public bool HasLog { get; set; }
 
+        public int AssignedSalesManID { get; set; }
         public SalesMan AssignedSalesMan { get; set; }
 
         public CreditCardData CardDetails { get; set; }

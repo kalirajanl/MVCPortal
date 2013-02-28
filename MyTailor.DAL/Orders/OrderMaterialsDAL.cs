@@ -133,9 +133,9 @@ namespace MyTailor.DAL.Orders
             param[14].Value = Convert.ToDecimal(itm.SubItem2Price);
             param[15].Value = Convert.ToDecimal(itm.Yardage);
             param[16].Value = itm.AssignedTailor.TailorID;
-            param[17].Value = itm.Color;
-            param[18].Value = itm.Pattern;
-            param[19].Value = itm.Category;
+            param[17].Value = itm.MaterialColor.ColorID;
+            param[18].Value = itm.MaterialPattern.PatternID;
+            param[19].Value = itm.MaterialCategory.CategoryID;
             param[20].Value = Convert.ToInt32(itm.FabricWidth);
             param[21].Value = Convert.ToBoolean(itm.IncludeSlackHalfLining);
             param[22].Value = Convert.ToBoolean(itm.IncludeSlackFullLining);
@@ -159,7 +159,7 @@ namespace MyTailor.DAL.Orders
                 itm.AssignedTailor = TailorDAL.GetTailorByID(Convert.ToInt32(dr["TailorID"]));
                 itm.ItemDescription = new ItemDescriptions();
                 itm.ItemDescription.OrderItemQuantity = Convert.ToInt32(dr["Quantity"]);
-                itm.ItemDescription.OrderItemType = (OrderItemTypes)Convert.ToInt32(dr["ItemType"]);
+                itm.ItemDescription.OrderItemType = CommonDAL.GetItemDescriptionTypeByID(Convert.ToInt32(dr["ItemType"]));
                 itm.MaterialDescription = dr["MaterialDescription"].ToString();
                 itm.MaterialName = dr["MaterialName"].ToString();
                 itm.Sequence = getCharacterSequence(Convert.ToInt32(dr["Sequence"]));
@@ -174,9 +174,9 @@ namespace MyTailor.DAL.Orders
                 itm.UnitPrice = Convert.ToDecimal(dr["Price"]);
                 itm.Yardage = Convert.ToDecimal(dr["Yardage"]);
 
-                itm.Color = dr["Color"].ToString();
-                itm.Pattern = dr["Pattern"].ToString();
-                itm.Category = dr["Category"].ToString();
+                itm.MaterialColor = CommonDAL.GetColorByID(Convert.ToInt32(dr["Color"]));
+                itm.MaterialPattern = CommonDAL.GetPatternByID(Convert.ToInt32(dr["Pattern"]));
+                itm.MaterialCategory = CommonDAL.GetCategoryByID(Convert.ToInt32(dr["Category"]));
                 itm.FabricWidth = (FabricWidths)Convert.ToInt32(dr["FabricWidth"]);
                 itm.IncludeSlackHalfLining = Convert.ToBoolean(dr["IncludeSlackHalfLining"]);
                 itm.IncludeSlackFullLining = Convert.ToBoolean(dr["IncludeSlackFullLining"]);

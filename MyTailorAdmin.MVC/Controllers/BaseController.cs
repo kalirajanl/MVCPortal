@@ -7,7 +7,11 @@ using MyTailorAdmin.MVC.Models;
 using System.Collections.Generic;
 
 using MyTailor.BDO.Masters;
+using MyTailor.BDO.Customers;
+using MyTailor.BDO.Orders;
 using MyTailor.Logic.Masters;
+using MyTailor.Logic.Customers;
+using MyTailor.Logic.Orders;
 
 namespace MyTailorAdmin.MVC.Controllers
 {
@@ -141,16 +145,34 @@ namespace MyTailorAdmin.MVC.Controllers
 
         private void loadMasters()
         {
-            List<SelectListItem> items = new List<SelectListItem>();
-            List<SalesMan> sms = SalesManLogic.GetSalesMen();
-            foreach (SalesMan t in sms)
-            {
-                SelectListItem s = new SelectListItem();
-                s.Text = t.LastName;
-                s.Value = t.SalesManID.ToString();
-                items.Add(s);
-            }
+            List<SalesMan> sms = SalesManLogic.GetSalesMen().OrderBy(sm => sm.Initials).ToList();
+            SelectList items = new SelectList(sms.AsEnumerable(), "SalesManID", "Initials");
             ViewBag.SalesMen = items;
+
+            List<Tailor> tl = TailorLogic.GetTailors().OrderBy(t => t.TailorCode).ToList();
+            SelectList tls = new SelectList(tl.AsEnumerable(), "TailorID", "TailorCode");
+            ViewBag.Tailors = tls;
+
+            List<OrderCustomer> oc = CustomerLogic.GetCustomers().OrderBy(c => c.DisplayName).ToList();
+            SelectList ocs = new SelectList(oc.AsEnumerable(), "CustomerID", "DisplayName");
+            ViewBag.Customers = ocs;
+
+            List<Color> cl = CommonLogic.GetColors().OrderBy(c => c.ColorName).ToList();
+            SelectList cls = new SelectList(cl.AsEnumerable(), "ColorID", "ColorName");
+            ViewBag.Colors = cls;
+
+            List<Pattern> pt = CommonLogic.GetPatterns().OrderBy(p => p.PatternName).ToList();
+            SelectList pts = new SelectList(pt.AsEnumerable(), "PatternID", "PatternName");
+            ViewBag.Patterns = pts;
+
+            List<Category> ct = CommonLogic.GetCategories().OrderBy(c => c.CategoryName).ToList();
+            SelectList cts = new SelectList(ct.AsEnumerable(), "CategoryID", "CategoryName");
+            ViewBag.Categories = cts;
+
+            List<ItemDescriptionType> id = CommonLogic.GetItemDescriptionTypes().OrderBy(c => c.ItemDescriptionTypeName).ToList();
+            SelectList ids = new SelectList(id.AsEnumerable(), "ItemDescriptionTypeID", "ItemDescriptionTypeName");
+            ViewBag.ItemDescriptions = cts;
+
         }
 
         #endregion

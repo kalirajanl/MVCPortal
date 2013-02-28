@@ -4,215 +4,59 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3>Settings</h3>
-</div>
-<div class="modal-body">
-    @using (Html.BeginForm())
-    {
-        @Html.ValidationSummary(true)
 
-        <fieldset>
-            <legend>OrderMaterialItem</legend>
+@using (Html.BeginForm())
+{
+    <div class="row-fluid sortable">
+        <div class="box span12">
+            <div class="box-content">
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true)
+                    <div class="control-group">
+                        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayNameFor(model => model.Sequence) :
+                        @Html.TextBoxFor(model => model.Sequence, new { @class = "input-mini uneditable-input disabled" })&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        @Html.DisplayNameFor(model => model.MaterialName1) :
+                        @Html.TextBoxFor(model => model.MaterialName1, new { @class = "input-micro" })&nbsp;&nbsp;
+                        @Html.TextBoxFor(model => model.MaterialName2, new { @class = "input-small" })&nbsp;&nbsp;
+                        @Html.TextBoxFor(model => model.MaterialName3, new { @class = "input-micro" })
+                    </div>
+                    <div class="control-group">
+                        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayNameFor(model => model.MaterialColor) :
+                        @Html.DropDownListFor(model => model.MaterialColor, (SelectList)ViewBag.Colors, "", new { @class = "input-medium", data_rel = "chosen", data_placeholder = "Select" })&nbsp; &nbsp; 
+                        @Html.DisplayNameFor(model => model.MaterialPattern) :
+                        @Html.DropDownListFor(model => model.MaterialPattern, (SelectList)ViewBag.Patterns, "", new { @class = "input-medium", data_rel = "chosen", data_placeholder = "Select" })&nbsp; &nbsp; 
+                        @Html.DisplayNameFor(model => model.MaterialCategory) :
+                        @Html.DropDownListFor(model => model.MaterialCategory, (SelectList)ViewBag.Categories, "", new { @class = "input-medium", data_rel = "chosen", data_placeholder = "Select" })
+                    </div>
+                    <div class="control-group">
+                        @Html.DisplayNameFor(model => model.ItemDescription.OrderItemType) :
+                        @Html.DropDownListFor(model => model.ItemDescription.OrderItemType, (SelectList)ViewBag.ItemDescriptions, "", new { @class = "input-medium", data_placeholder = "Select" })&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayNameFor(model => model.AssignedTailor.TailorCode) :
+                        @Html.DropDownListFor(model => model.AssignedTailor.TailorCode, (SelectList)ViewBag.Tailors, "", new { @class = "input-medium", data_rel = "chosen", data_placeholder = "Select" })
+                    </div>
+                    <div class="control-group">
+                        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayNameFor(model => model.ItemDescription.OrderItemQuantity) :
+                        @Html.TextBoxFor(model => model.ItemDescription.OrderItemQuantity, new { @class = "input-small" })&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayNameFor(model => model.UnitPrice) :
+                        @Html.TextBoxFor(model => model.UnitPrice, new { @class = "input-small" })&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayNameFor(model => model.MaterialPrice) :
+                        @Html.TextBoxFor(model => model.MaterialPrice, new { @class = "input-small  uneditable-input  disabled" })&nbsp;&nbsp;
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Sequence)
+                            @Html.DisplayNameFor(model => model.Yardage) :
+                        @Html.TextBoxFor(model => model.Yardage, new { @class = "input-small" })&nbsp;&nbsp;
+                    </div>
+                </div>
             </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Sequence)
-                @Html.ValidationMessageFor(model => model.Sequence)
-            </div>
+        </div>
+    </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.MaterialName)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.MaterialName)
-                @Html.ValidationMessageFor(model => model.MaterialName)
-            </div>
+}
+<text>
+    <script language="Text/Javascript">
+        $("#typeahead").attr('data-source','["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]');
+    </script>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.MaterialDescription)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.MaterialDescription)
-                @Html.ValidationMessageFor(model => model.MaterialDescription)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.SubItem1)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.SubItem1)
-                @Html.ValidationMessageFor(model => model.SubItem1)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.SubItem1Qty)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.SubItem1Qty)
-                @Html.ValidationMessageFor(model => model.SubItem1Qty)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.SubItem1Price)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.SubItem1Price)
-                @Html.ValidationMessageFor(model => model.SubItem1Price)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.SubItem2)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.SubItem2)
-                @Html.ValidationMessageFor(model => model.SubItem2)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.SubItem2Qty)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.SubItem2Qty)
-                @Html.ValidationMessageFor(model => model.SubItem2Qty)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.SubItem2Price)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.SubItem2Price)
-                @Html.ValidationMessageFor(model => model.SubItem2Price)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.UnitPrice)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.UnitPrice)
-                @Html.ValidationMessageFor(model => model.UnitPrice)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Yardage)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Yardage)
-                @Html.ValidationMessageFor(model => model.Yardage)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Color)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Color)
-                @Html.ValidationMessageFor(model => model.Color)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Pattern)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Pattern)
-                @Html.ValidationMessageFor(model => model.Pattern)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Category)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Category)
-                @Html.ValidationMessageFor(model => model.Category)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.IncludeSlackHalfLining)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.IncludeSlackHalfLining)
-                @Html.ValidationMessageFor(model => model.IncludeSlackHalfLining)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.IncludeSlackFullLining)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.IncludeSlackFullLining)
-                @Html.ValidationMessageFor(model => model.IncludeSlackFullLining)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.IncludeRBHole)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.IncludeRBHole)
-                @Html.ValidationMessageFor(model => model.IncludeRBHole)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.IncludeHSEdges)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.IncludeHSEdges)
-                @Html.ValidationMessageFor(model => model.IncludeHSEdges)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.IncludeMono)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.IncludeMono)
-                @Html.ValidationMessageFor(model => model.IncludeMono)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.IncludePB)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.IncludePB)
-                @Html.ValidationMessageFor(model => model.IncludePB)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.IncludeWCC)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.IncludeWCC)
-                @Html.ValidationMessageFor(model => model.IncludeWCC)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.IncludeWC)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.IncludeWC)
-                @Html.ValidationMessageFor(model => model.IncludeWC)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.IncludeSS)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.IncludeSS)
-                @Html.ValidationMessageFor(model => model.IncludeSS)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.IncludeFT)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.IncludeFT)
-                @Html.ValidationMessageFor(model => model.IncludeFT)
-            </div>
-
-
-        </fieldset>
-    }
-
-</div>
+</text>
 <div class="modal-footer">
     <a href="#" class="btn" data-dismiss="modal">Close</a>
     <a href="#" class="btn btn-primary">Save changes</a>

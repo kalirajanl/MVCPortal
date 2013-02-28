@@ -49,6 +49,10 @@
     <Compile Include="Customers\CustomerPreferences.cs" />
     <Compile Include="GiftCertificate\GiftCertificate.cs" />
     <Compile Include="GiftCertificate\GiftCertificateReceiver.cs" />
+    <Compile Include="Masters\Category.cs" />
+    <Compile Include="Masters\Color.cs" />
+    <Compile Include="Masters\ItemDescriptionType.cs" />
+    <Compile Include="Masters\Pattern.cs" />
     <Compile Include="Orders\ItemDescriptions.cs" />
     <Compile Include="Orders\OrderFinishedSize.cs" />
     <Compile Include="Orders\OrderHeader.cs" />

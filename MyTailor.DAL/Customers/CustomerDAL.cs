@@ -53,7 +53,7 @@ namespace MyTailor.DAL.Customers
         private static OrderCustomer loadOrderCustomer(DataRow dr)
         {
             OrderCustomer itm = new OrderCustomer();
-            itm.CustomerID = (Guid)dr["OrderID"];
+            itm.CustomerID = (Guid)dr["CustomerID"];
             itm.FirstName = dr["FirstName"].ToString();
             itm.LastName = dr["LastName"].ToString();
             itm.MInitials = dr["MInitials"].ToString();

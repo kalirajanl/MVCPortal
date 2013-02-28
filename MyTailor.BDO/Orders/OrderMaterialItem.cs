@@ -10,7 +10,7 @@ using MyTailor.BDO.Masters;
 
 namespace MyTailor.BDO.Orders
 {
-    public class OrderMaterialItem 
+    public class OrderMaterialItem
     {
 
         public OrderMaterialItem()
@@ -19,9 +19,31 @@ namespace MyTailor.BDO.Orders
             AssignedTailor = new Tailor();
         }
 
+        [Display(Name = "Item")]
         public char Sequence { get; set; }
 
-        public string MaterialName { get; set; }
+        [Display(Name = "Material")]
+        public string MaterialName1 { get; set; }
+        public string MaterialName2 { get; set; }
+        public string MaterialName3 { get; set; }
+
+        public string MaterialName
+        {
+            get
+            {
+                return MaterialName1 + "-" + MaterialName2 + "-" + MaterialName3;
+            }
+
+            set
+            {
+                if (value.IndexOf(Convert.ToChar("-")) > 0)
+                {
+                    MaterialName1 = value.Substring(0, value.IndexOf(Convert.ToChar("-")));
+                    MaterialName2 = value.Substring(MaterialName1.Length + 1, value.IndexOf(Convert.ToChar("-")));
+                    MaterialName3 = value.Substring(MaterialName1.Length + MaterialName2.Length + 1, value.IndexOf(Convert.ToChar("-")));
+                }
+            }
+        }
         public string MaterialDescription { get; set; }
         public ItemDescriptions ItemDescription { get; set; }
         public string SubItem1 { get; set; }
@@ -32,7 +54,10 @@ namespace MyTailor.BDO.Orders
         public SuitSubItemTypes SubItem2Type { get; set; }
         public double SubItem2Qty { get; set; }
         public decimal SubItem2Price { get; set; }
+        
+        [Display(Name = "Rate")]
         public decimal UnitPrice { get; set; }
+
         public decimal Yardage { get; set; }
         public Tailor AssignedTailor { get; set; }
 
@@ -45,9 +70,15 @@ namespace MyTailor.BDO.Orders
             private set { }
         }
 
-        public string Color { get; set; } // should this be a link to MCA Color?
-        public string Pattern { get; set; } // should this be a link to MCA Pattern?
-        public string Category { get; set; } // should this be a link to MCA Category?
+        [Display(Name="Color")]
+        public Color MaterialColor { get; set; } // should this be a link to MCA Color?
+        
+        [Display(Name = "Pattern")]
+        public Pattern MaterialPattern { get; set; } // should this be a link to MCA Pattern?
+        
+        [Display(Name = "Category")]
+        public Category MaterialCategory { get; set; } // should this be a link to MCA Category?
+
         public FabricWidths FabricWidth { get; set; }
 
         public bool IncludeSlackHalfLining { get; set; }

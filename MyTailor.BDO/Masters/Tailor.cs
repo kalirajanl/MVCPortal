@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 using MyTailor.BDO.Common;
 using MyTailor.BDO.Masters;
@@ -12,6 +13,7 @@ namespace MyTailor.BDO.Masters
     public class Tailor
     {
         public int TailorID { get; set; }
+        [Display(Name = "Tailor")]
         public string TailorCode { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

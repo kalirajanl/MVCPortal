@@ -952,6 +952,9 @@ select {
         margin-left: 10px;
     }
 
+    .input-micro {
+    width: 40px;
+}
 .input-mini {
     width: 60px;
 }

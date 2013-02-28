@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customers\CustomerLogic.cs" />
+    <Compile Include="Masters\CommonLogic.cs" />
     <Compile Include="Masters\SalesManLogic.cs" />
     <Compile Include="Masters\TailorLogic.cs" />
     <Compile Include="Orders\OrderLogic.cs" />

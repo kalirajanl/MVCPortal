@@ -30,6 +30,7 @@ namespace MyTailor.BDO.Orders
             this.OrderID = Guid.NewGuid();
             this.OrderNumber = DateTime.Now.ToString("MMddHHss");
             this.OrderTakenDate = DateTime.Today;
+            this.AssignedSalesMan = new SalesMan();
         }
     }
 }
